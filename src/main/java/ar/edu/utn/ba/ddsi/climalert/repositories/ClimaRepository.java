@@ -1,6 +1,6 @@
 package ar.edu.utn.ba.ddsi.climalert.repositories;
 
-import ar.edu.utn.ba.ddsi.climalert.dtos.Clima;
+import ar.edu.utn.ba.ddsi.climalert.domain.Clima;
 import java.util.List;
 import java.util.Optional;
 

@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Clima {
 
+    private Long id;
+
     private Ubicacion ubicacion;
 
     private ClimaActual climaActual;

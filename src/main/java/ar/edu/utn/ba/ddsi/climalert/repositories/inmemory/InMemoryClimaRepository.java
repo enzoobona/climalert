@@ -1,7 +1,8 @@
 package ar.edu.utn.ba.ddsi.climalert.repositories.inmemory;
 
-import ar.edu.utn.ba.ddsi.climalert.dtos.Clima;
+import ar.edu.utn.ba.ddsi.climalert.domain.Clima;
 import ar.edu.utn.ba.ddsi.climalert.repositories.ClimaRepository;
+import ar.edu.utn.ba.ddsi.climalert.utils.GeneradorDeIds;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 public class InMemoryClimaRepository implements ClimaRepository {
 
     private final List<Clima> historialDeClimas = new ArrayList<>();
+    private final GeneradorDeIds generadorDeIds = new GeneradorDeIds();
 
     @Override
     public List<Clima> findAll() {
@@ -27,7 +29,7 @@ public class InMemoryClimaRepository implements ClimaRepository {
     @Override
     public Clima save(Clima clima) {
         if (clima.getId() == null) {
-            clima.setId(historialDeClimas.toArray().length + 1);
+            clima.setId(generadorDeIds.siguiente());
             historialDeClimas.add(clima);
             return clima;
         }
