@@ -2,7 +2,6 @@ package ar.edu.utn.ba.ddsi.climalert.services.impl;
 
 import ar.edu.utn.ba.ddsi.climalert.config.RestWeatherProperties;
 import ar.edu.utn.ba.ddsi.climalert.dtos.Clima;
-import ar.edu.utn.ba.ddsi.climalert.dtos.ClimaActual;
 import ar.edu.utn.ba.ddsi.climalert.repositories.ClimaRepository;
 import ar.edu.utn.ba.ddsi.climalert.services.AlertaService;
 import ar.edu.utn.ba.ddsi.climalert.services.ClimaService;
@@ -47,26 +46,25 @@ public class ClimaServiceImpl implements ClimaService {
     @Override
     public void analizarClimas() {
 
-        String alerta = "Alerta: ";
+        String alerta = "======================= ALERTA DE CLIMA =======================\n\n";
 
         Optional<Clima> ultimo = this.climaRepository.findLast();
-        ClimaActual clima = ultimo.get().getClimaActual();
+        Clima clima = ultimo.get();
 
-        alerta += temperaturaAlta(clima.getTemperatura());
-        if(!alerta.equals("Alerta: ")) alerta += " y ";
-        alerta += humedadAlta(clima.getHumedad());
-        alerta += ".";
+        if(!humedadAlta(clima.getClimaActual().getHumedad()) && !temperaturaAlta(clima.getClimaActual().getTemperatura())) return;
+
+        alerta += clima.getClimaActual().camposAStrings();
 
         this.alertaService.enviarAlerta(alerta);
 
     }
 
-    private String temperaturaAlta(double temperatura) {
-        return temperatura > 35.0 ? "Temperatura de " + temperatura + " grados " : "";
+    private boolean temperaturaAlta(double temperatura) {
+        return temperatura > 35.0;
     }
 
-    private String humedadAlta(int humedad) {
-        return humedad > 60 ? "Humedad de " + humedad + " % " : "";
+    private boolean humedadAlta(int humedad) {
+        return humedad > 60;
     }
 
 }
