@@ -1,4 +1,4 @@
-package ar.edu.utn.ba.ddsi.climalert.dtos;
+package ar.edu.utn.ba.ddsi.climalert.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
