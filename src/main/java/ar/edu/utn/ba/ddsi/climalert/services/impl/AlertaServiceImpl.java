@@ -14,7 +14,7 @@ public class AlertaServiceImpl implements AlertaService {
 
     public AlertaServiceImpl(JavaMailSender mailSender) {
         this.mailSender = mailSender;
-        this.emails = List.of(/*"admin@clima.com", "emergencias@clima.com", "meteorologia@clima.com",*/ "enzobona05@gmail.com");
+        this.emails = List.of("admin@clima.com", "emergencias@clima.com", "meteorologia@clima.com");
     }
 
     @Override

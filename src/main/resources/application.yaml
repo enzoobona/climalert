@@ -1,6 +1,17 @@
 spring:
   application:
     name: climalert
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gmailplaceholder@gmail.com
+    password: passwordplaceholder
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 weather-api:
   base-url: https://api.weatherapi.com/v1
   method: /current.json
