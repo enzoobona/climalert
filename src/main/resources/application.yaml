@@ -1,3 +1,8 @@
 spring:
   application:
     name: climalert
+weather-api:
+  base-url: https://api.weatherapi.com/v1
+  method: /current.json
+  key: 2006e47f9949457887a234240262806
+  city-name: Buenos Aires
