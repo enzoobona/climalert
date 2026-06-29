@@ -8,12 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClimaActual {
+public class Ubicacion {
 
-    @JsonProperty("temp_c")
-    private double temperatura;
-
-    @JsonProperty("humidity")
-    private int humedad;
+    @JsonProperty("name")
+    private String nombre;
 
 }
